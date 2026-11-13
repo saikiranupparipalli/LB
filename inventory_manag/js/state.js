@@ -7,33 +7,29 @@ export let inventory = [
     name: "doors",
     category: "wood",
     price: 100,
-    quantity: 10,
+    quantity: 88,
   },
   {
     id: 1,
     name: "dolo 650",
     category: "medicine",
     price: 10,
-    quantity: 5,
+    quantity: 12,
   },
   {
-    id:2,
+    id: 2,
     name: "school bag",
     category: "bags",
     price: 600,
-    quantity: 0,
+    quantity: 100,
   },
 ];
 
-
-export function get_inventory(){
-    return inventory
+export function get_inventory() {
+  return inventory;
 }
 
-export function set_inventory(arr){
-    inventory = arr
-    return arr
+export function set_inventory(arr) {
+  inventory = arr;
+  return arr;
 }
-
- 
-
