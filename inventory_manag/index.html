@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Inventory Management</h1>
+      <p class="subtitle">Minimalist dashboard for tracking stock and inventory valuation</p>
+    </header>
+
+    <!-- Top KPI Summary Cards -->
+    <section class="kpi-grid">
+      <div class="card">
+        <span class="card-label">Total Inventory Value</span>
+        <div class="card-value" id="total-value">$0.00</div>
+      </div>
+      <div class="card">
+        <span class="card-label">Total Products</span>
+        <div class="card-value" id="total-products">0</div>
+      </div>
+      <div class="card">
+        <span class="card-label">Low Stock Items</span>
+        <div class="card-value warning-text" id="low-stock-count">0</div>
+      </div>
+      <div class="card">
+        <span class="card-label">Out of Stock</span>
+        <div class="card-value danger-text" id="out-of-stock-count">0</div>
+      </div>
+    </section>
+
+    <!-- Main Content Area: Form & Table -->
+    <main class="main-layout">
+      <!-- Add Product Form -->
+      <section class="panel form-panel">
+        <h2>Add Product</h2>
+        <form id="product-form">
+          <div class="form-group">
+            <label for="product-name">Product Name</label>
+            <input type="text" id="product-name" placeholder="e.g. Wireless Mouse" required>
+          </div>
+
+          <div class="form-group">
+            <label for="product-category">Category</label>
+            <input type="text" id="product-category" placeholder="e.g. Electronics" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="product-price">Price ($)</label>
+              <input type="number" id="product-price" step="0.01" min="0" placeholder="0.00" required>
+            </div>
+            <div class="form-group">
+              <label for="product-quantity">Quantity</label>
+              <input type="number" id="product-quantity" min="0" placeholder="0" required>
+            </div>
+          </div>
+
+          <button type="submit" id="add-product-btn" class="btn primary-btn">Add Product</button>
+        </form>
+      </section>
+
+      <!-- Inventory Table & Filter Controls -->
+      <section class="panel table-panel">
+        <div class="table-header">
+          <h2>Stock List</h2>
+          <!-- Filter Controls -->
+          <div class="filter-controls">
+            <label for="stock-filter">Filter:</label>
+            <select id="stock-filter">
+              <option value="all">All Items</option>
+              <option value="low-stock">Low Stock (≤ 5)</option>
+              <option value="out-of-stock">Out of Stock (0)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Value</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-tbody">
+              <!-- Dynamic rows will be rendered here by js/ui.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Micro-Architecture Entrypoint (ES Module) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
+
