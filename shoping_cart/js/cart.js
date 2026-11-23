@@ -49,7 +49,6 @@ function getCart(){
   return cart
 }
 addToCart(1)
-console.log(getCart())
 export { addToCart, increaseQuantity, decreaseQuantity, removeFromCart, getCart};
 
 // function addItems(id, name, price, stock) {
