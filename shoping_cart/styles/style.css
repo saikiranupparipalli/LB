@@ -1,0 +1,563 @@
+/* ==========================================================================
+   Shopfront — Modern, Vibrant & Spacious Theme
+   Clean geometry, balanced sizing, precise spacing, and cohesive vibrant palette
+   ========================================================================== */
+
+/* 1. Design Tokens & Color Palette */
+:root {
+  /* Vibrant Primary & Accents */
+  --primary: #4f46e5;               /* Electric Indigo */
+  --primary-hover: #4338ca;         /* Deep Indigo */
+  --primary-light: #eef2ff;          /* Soft Indigo Wash */
+  --accent-cyan: #06b6d4;           /* Vibrant Cyan */
+  
+  --success: #10b981;               /* Emerald */
+  --success-light: #ecfdf5;         /* Mint Wash */
+  
+  --warning: #f59e0b;               /* Amber */
+  --warning-light: #fffbeb;         /* Amber Wash */
+  
+  --danger: #ef4444;                /* Coral / Red */
+  --danger-light: #fef2f2;          /* Rose Wash */
+  
+  /* Text & Surface Hierarchy */
+  --text-dark: #0f172a;             /* Deep Midnight Slate */
+  --text-body: #334155;             /* Readable Slate */
+  --text-muted: #64748b;            /* Soft Muted Gray */
+  
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --border-card: #e2e8f0;
+  --border-input: #cbd5e1;
+  --border-focus: #6366f1;
+  
+  /* Shadows & Depth */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+  --shadow-hover: 0 10px 20px -3px rgba(79, 70, 229, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+  
+  /* Standard Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 9999px;
+  
+  --transition: all 0.18s ease;
+}
+
+/* 2. Global Reset & Ambient Background */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-body);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-bottom: 4rem;
+  -webkit-font-smoothing: antialiased;
+  
+  /* Vibrant Ambient Mesh Background */
+  background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.10) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.06) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* 3. Top Navigation Header */
+.app-header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-card);
+  padding: 0.85rem 2rem;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+}
+
+.header-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-cyan) 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+}
+
+.brand-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  line-height: 1.15;
+}
+
+.brand-tagline {
+  font-size: 0.725rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+}
+
+.cart-pill {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-dark);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.cart-pill svg {
+  color: var(--primary);
+}
+
+.cart-counter {
+  background: var(--primary);
+  color: #ffffff;
+  min-width: 20px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0 5px;
+}
+
+/* 4. Main Two-Column Layout */
+.main-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 380px);
+  gap: 2.25rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+}
+
+/* 5. Section Headers */
+.section-header {
+  margin-bottom: 1.25rem;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+/* 6. Product Catalog Cards */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.25rem;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.product-info h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
+  margin-bottom: 0.35rem;
+}
+
+.product-price {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.product-stock {
+  font-size: 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.stock-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.725rem;
+  font-weight: 600;
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.stock-tag.low-stock {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.stock-tag.out-of-stock {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+/* 7. Cart Column: Items & Empty State */
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.empty-cart-card {
+  background: var(--bg-card);
+  border: 1px dashed var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.empty-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.empty-cart-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.empty-cart-card p {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.cart-item-row {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.cart-item-row:hover {
+  border-color: rgba(99, 102, 241, 0.25);
+  box-shadow: var(--shadow-card);
+}
+
+.cart-item-details h4 {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.cart-item-details .unit-price {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.cart-item-details .item-total-preview {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 0.25rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.35rem;
+}
+
+.qty-display {
+  min-width: 26px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+}
+
+/* 8. Order Summary Card */
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.summary-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-dark);
+  margin-bottom: 1.25rem;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.summary-line .label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.summary-line .value {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.discount-line .label,
+.discount-line .value {
+  color: var(--success) !important;
+}
+
+.summary-divider {
+  border: none;
+  border-top: 1px solid var(--border-card);
+  margin: 1.15rem 0;
+}
+
+.total-line {
+  margin-bottom: 1.5rem;
+}
+
+.total-line .label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.total-badge {
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  color: var(--primary) !important;
+}
+
+/* 9. Promo Code Box */
+.coupon-box {
+  background-color: #f8fafc;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.coupon-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.coupon-form {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.coupon-input {
+  flex: 1;
+  height: 38px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.coupon-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.coupon-status {
+  font-size: 0.775rem;
+  min-height: 1.15rem;
+  font-weight: 600;
+}
+
+.coupon-status.error {
+  color: var(--danger);
+}
+
+.coupon-status.success {
+  color: var(--success);
+}
+
+/* 10. Buttons & Controls */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  height: 38px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-apply {
+  background-color: var(--text-dark);
+  color: #ffffff;
+  padding: 0 1rem;
+  flex-shrink: 0;
+}
+
+.btn-apply:hover {
+  background-color: var(--primary);
+}
+
+.btn-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-card);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-icon:hover:not(:disabled) {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.btn-danger-text:hover {
+  background-color: var(--danger-light);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
