@@ -19,11 +19,11 @@ function calculateSubTotal(getCart) {
 function applyCoupon(coupon, subTotal) {
   if (coupon !== "") {
     const toCap = coupon.toString().trim().toUpperCase();
-    if (toCap === "EXTRA10") {
+    if (toCap === "SAVE10") {
       const calDis = 10 / 100;
       const dis = subTotal * calDis;
       return dis;
-    } else if (toCap === "EXTRA50") {
+    } else if (toCap === "SAVE50") {
       const calDis = 50 / 100;
       const dis = subTotal * calDis;
       return dis;

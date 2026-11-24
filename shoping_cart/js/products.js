@@ -18,3 +18,5 @@ export const products = [
     stock: 10,
   },
 ];
+
+export default products;

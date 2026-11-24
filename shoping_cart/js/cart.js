@@ -45,11 +45,17 @@ function removeFromCart(id) {
   cart = remFromCart;
 }
 
-function getCart(){
-  return cart
+function getCart() {
+  return cart;
 }
-addToCart(1)
-export { addToCart, increaseQuantity, decreaseQuantity, removeFromCart, getCart};
+addToCart(1);
+export {
+  addToCart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+  getCart,
+};
 
 // function addItems(id, name, price, stock) {
 //   return {
