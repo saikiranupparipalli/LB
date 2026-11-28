@@ -1,4 +1,243 @@
-/* styles.css - Clean, modern layout for Storefront & Orders */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, -apple-system, sans-serif; background-color: #f8fafc; color: #1e293b; padding: 2rem; }
+/* styles.css — E-Commerce Order Management */
 
+/* ── Reset & base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f4f6f9;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+header {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+}
+
+/* ── Layout ────────────────────────────────────────────────────────────────── */
+#app {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+}
+
+/* product list spans full width on small screens */
+#product-list  { grid-column: 1; }
+#cart-section  { grid-column: 2; grid-row: 1 / 3; }
+#order-status  { grid-column: 1; }
+
+/* ── Product grid ──────────────────────────────────────────────────────────── */
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+  align-content: start;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.11);
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+}
+
+.product-card p {
+  font-size: 0.88rem;
+  color: #555;
+  flex: 1;
+}
+
+/* price line */
+.product-card p:nth-child(3) {
+  font-weight: 700;
+  color: #e63946;
+  font-size: 1rem;
+}
+
+/* stock line */
+.product-card p:nth-child(4) {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.add-to-cart-btn {
+  background: #1a1a2e;
+  color: #fff;
+  margin-top: 0.6rem;
+  width: 100%;
+  padding: 0.65rem;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+  background: #e63946;
+}
+
+.add-to-cart-btn:disabled {
+  background: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.remove-btn {
+  background: #fff0f0;
+  color: #e63946;
+  border: 1px solid #e63946;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+}
+
+.remove-btn:hover {
+  background: #e63946;
+  color: #fff;
+}
+
+/* ── Cart section ──────────────────────────────────────────────────────────── */
+#cart-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: start;
+  position: sticky;
+  top: 80px;
+}
+
+#cart-section h2 {
+  font-size: 1.1rem;
+  border-bottom: 2px solid #f4f6f9;
+  padding-bottom: 0.6rem;
+  color: #1a1a2e;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.88rem;
+}
+
+.cart-item span:first-child {
+  flex: 1;
+  font-weight: 600;
+}
+
+#cart-total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  text-align: right;
+}
+
+/* ── Checkout form ─────────────────────────────────────────────────────────── */
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+#checkout-form input {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#checkout-form input:focus {
+  border-color: #1a1a2e;
+}
+
+#checkout-form button[type="submit"] {
+  background: #e63946;
+  color: #fff;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
+}
+
+#checkout-form button[type="submit"]:hover {
+  background: #c1121f;
+}
+
+/* ── Order status ──────────────────────────────────────────────────────────── */
+#order-status p {
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: #f0fff4;
+  border: 1px solid #b7ebc8;
+}
+
+#order-status p[style*="red"] {
+  background: #fff0f0;
+  border-color: #f5c0c0;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #app {
+    grid-template-columns: 1fr;
+  }
+  #cart-section {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+  }
+  #order-status {
+    grid-column: 1;
+  }
+}
